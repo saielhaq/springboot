@@ -94,6 +94,8 @@ public class Player {
                 ", nationality='" + nationality + '\'' +
                 ", team='" + team + '\'' +
                 ", sens=" + sens +
+                ", dpi=" + dpi +
+                ", tier=" + tier +
                 '}';
     }
 }

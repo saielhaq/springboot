@@ -62,7 +62,7 @@ class ProsettingsApplicationTests {
 	}
 
 	@Test
-	public void testFindByNamePlayerContains(){
+	public void testFindByNamePlayerPerPage(){
 		Page<Player> players = playerService.getAllPlayersPerPage(0, 5);
 		System.out.println(players.getSize());
 		System.out.println(players.getTotalElements());
@@ -70,4 +70,31 @@ class ProsettingsApplicationTests {
 		players.getContent().forEach(p -> {System.out.println(p.toString());
 		});
 	}
+
+	@Test
+	public void testFindByName(){
+		List<Player> players = playerRepository.findByPlayerName("Saad");
+		for(Player p: players){
+			System.out.println(p);
+		}
+	}
+
+	@Test
+	public void testFindByNameContains(){
+		List<Player> players = playerRepository.findByPlayerNameContains("S");
+		for(Player p: players){
+			System.out.println(p.getPlayerName());
+		}
+	}
+
+	@Test
+	public void testFindByDPIAndSens(){
+		List<Player> players = playerRepository.findByDPIAndSens(1600, 0.2);
+		for(Player p: players){
+			System.out.println(p.getPlayerName());
+		}
+	}
+
+
+
 }
