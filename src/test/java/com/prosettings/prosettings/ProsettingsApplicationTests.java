@@ -111,7 +111,7 @@ class ProsettingsApplicationTests {
 	}
 
 	@Test
-	public void à(){
+	public void setTier(){
 		List<Player> vct = playerRepository.findByPlayerName("Demon1");
 		Tier t1 = new Tier();
 		t1.setTierId(2L);
@@ -127,6 +127,14 @@ class ProsettingsApplicationTests {
 		t.setTierId(1L);
 		List<Player> players = playerRepository.findByTier(t);
 		for (Player p: players){
+			System.out.println(p.getPlayerName());
+		}
+	}
+
+	@Test
+	public void testFindByCategoryId(){
+		List<Player> players = playerRepository.findByTierTierId(1L);
+		for(Player p: players){
 			System.out.println(p.getPlayerName());
 		}
 	}

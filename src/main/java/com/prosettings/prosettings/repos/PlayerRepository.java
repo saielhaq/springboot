@@ -21,5 +21,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     @Query("select p from Player p where p.tier = ?1 order by p.playerId asc")
     List<Player> findByTier(Tier tier);
+
+    List<Player> findByTierTierId(Long id);
 }
 
