@@ -2,6 +2,7 @@ package com.prosettings.prosettings.service;
 
 
 import com.prosettings.prosettings.entities.Player;
+import com.prosettings.prosettings.entities.Tier;
 import com.prosettings.prosettings.repos.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -51,5 +52,35 @@ public class PlayerServiceImpl implements PlayerService{
     @Override
     public Page<Player> getAllPlayersPerPage(int page, int size) {
         return playerRepository.findAll(PageRequest.of(page, size));
+    }
+
+    @Override
+    public List<Player> findByNamePlayer(String name) {
+        return playerRepository.findByPlayerName(name);
+    }
+
+    @Override
+    public List<Player> findByNamePlayerContains(String name) {
+        return playerRepository.findByPlayerNameContains(name);
+    }
+
+    @Override
+    public List<Player> findByDPIAndSens(int dpi, Double sens) {
+        return playerRepository.findByDPIAndSens(dpi, sens);
+    }
+
+    @Override
+    public List<Player> findByTier(Tier tier) {
+        return playerRepository.findByTier(tier);
+    }
+
+    @Override
+    public List<Player> findByTierTierId(Long id) {
+        return playerRepository.findByTierTierId(id);
+    }
+
+    @Override
+    public List<Player> sortPlayersNameSens() {
+        return playerRepository.sortPlayersNameSens();
     }
 }
