@@ -1,14 +1,18 @@
 package com.prosettings.prosettings;
 
 import com.prosettings.prosettings.entities.Player;
+import com.prosettings.prosettings.entities.Tier;
 import com.prosettings.prosettings.repos.PlayerRepository;
+import com.prosettings.prosettings.repos.TierRepository;
 import com.prosettings.prosettings.service.PlayerService;
+import jdk.jfr.Category;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +24,9 @@ class ProsettingsApplicationTests {
 
 	@Autowired
 	private PlayerService playerService;
+
+	@Autowired
+	private TierRepository tierRepository;
 
 	@Test
 	public void testCreatePlayer(){
@@ -96,5 +103,32 @@ class ProsettingsApplicationTests {
 	}
 
 
+	@Test
+	public void testInsertTiers(){
+		List<Player> playerList = Arrays.asList(new Player(0.2, "Leviathan", "Brazil", "Aspas", 1600));
+		Tier t = new Tier("Challengers", "Tier 2", playerList);
+		tierRepository.save(t);
+	}
+
+	@Test
+	public void à(){
+		List<Player> vct = playerRepository.findByPlayerName("Demon1");
+		Tier t1 = new Tier();
+		t1.setTierId(2L);
+		for (Player p : vct){
+			p.setTier(t1);
+			playerRepository.save(p);
+		}
+	}
+
+	@Test
+	public void testFindByCategory(){
+		Tier t = new Tier();
+		t.setTierId(1L);
+		List<Player> players = playerRepository.findByTier(t);
+		for (Player p: players){
+			System.out.println(p.getPlayerName());
+		}
+	}
 
 }

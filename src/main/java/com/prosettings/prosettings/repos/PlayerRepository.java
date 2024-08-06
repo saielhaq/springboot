@@ -1,6 +1,7 @@
 package com.prosettings.prosettings.repos;
 
 import com.prosettings.prosettings.entities.Player;
+import com.prosettings.prosettings.entities.Tier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,5 +18,8 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     @Query("select p from Player p where p.dpi = :dpi and p.sens <= :sens")
     List<Player> findByDPIAndSens(@Param("dpi") int dpi, @Param("sens") Double sens);
+
+    @Query("select p from Player p where p.tier = ?1 order by p.playerId asc")
+    List<Player> findByTier(Tier tier);
 }
 

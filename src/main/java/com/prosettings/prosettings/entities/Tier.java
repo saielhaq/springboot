@@ -9,7 +9,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Tier {
 
@@ -22,5 +21,10 @@ public class Tier {
     @OneToMany (mappedBy = "tier")
     private List<Player> players;
 
-
+    public Tier(String tierName, String tierDescription, List<Player> players) {
+        super();
+        this.tierName = tierName;
+        this.tierDescription = tierDescription;
+        this.players = players;
+    }
 }
