@@ -19,9 +19,12 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Query("select p from Player p where p.dpi = :dpi and p.sens <= :sens")
     List<Player> findByDPIAndSens(@Param("dpi") int dpi, @Param("sens") Double sens);
 
-    @Query("select p from Player p where p.tier = ?1 order by p.playerId asc")
+    @Query("select p from Player p where p.tier = ?1")
     List<Player> findByTier(Tier tier);
 
     List<Player> findByTierTierId(Long id);
-}
 
+    @Query("select p from Player p order by p.playerName ASC, p.sens DESC")
+    List<Player> sortPlayersNameSens();
+
+}

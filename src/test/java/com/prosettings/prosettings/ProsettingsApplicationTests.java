@@ -139,4 +139,12 @@ class ProsettingsApplicationTests {
 		}
 	}
 
+	@Test
+	public void testSortByNameSens(){
+		List<Player> players = playerRepository.sortPlayersNameSens();
+		for(Player p: players){
+			System.out.println(p.getPlayerName());
+		}
+	}
+
 }
