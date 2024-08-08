@@ -17,13 +17,14 @@
         <div class="card-body">
             <table class="table table-striped">
                 <tr>
-                    <th>ID</th><th>Player Name</th><th>Nationality</th><th>Sens</th><th>Action</th>
+                    <th>ID</th><th>Player Name</th><th>Nationality</th><th>Sens</th><th>DPI</th><th>Action</th>
                 </tr>
                 <tr th:each="p:${players.content}">
                     <td th:text="${p.playerId}"></td>
                     <td th:text="${p.playerName}"></td>
                     <td th:text="${p.nationality}"></td>
                     <td th:text="${p.sens}"></td>
+                    <td th:text="${p.dpi}"></td>
                     <td><a class="btn btn-danger" th:href="@{deletePlayer(id=${p.playerId}, page=${currentPage}, size=${size})}" onclick="return confirm('Are you sure about that?')">Delete</a></td>
                 </tr>
             </table>

@@ -34,7 +34,6 @@ public class PlayerController {
         return "createPlayer";
     }
 
-
     @RequestMapping("/savePlayer")
     public String savePlayer(@ModelAttribute("player") Player player, @RequestParam("sens") Double sens, ModelMap modelMap) throws ParseException {
         player.setSens(sens);
